@@ -1,0 +1,79 @@
+name: CI Workflow
+
+on:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # tracking ke mlruns di dalam Workflow-CI/MLProject
+    env:
+      MLFLOW_TRACKING_URI: file:./Workflow-CI/MLProject/mlruns
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12.7"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mlflow==2.19.0 catboost==1.2.5 scikit-learn==1.5.2 pandas==2.2.3 numpy==1.26.4 matplotlib==3.9.2 scipy==1.11.4
+
+      - name: Run MLflow Project
+        working-directory: Workflow-CI/MLProject
+        run: |
+          mlflow run . --env-manager=local
+
+      - name: Capture latest run_id
+        working-directory: Workflow-CI/MLProject
+        run: |
+          RUN_ID=$(ls -td mlruns/0/*/ | head -n 1 | xargs -n1 basename)
+          echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
+          echo "Latest run_id: $RUN_ID"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: mlflow-artifacts
+          path: |
+            Workflow-CI/MLProject/mlruns/
+            Workflow-CI/MLProject/submission.csv
+            Workflow-CI/MLProject/confusion_matrix_val.png
+            Workflow-CI/MLProject/feature_importance.csv
+
+      - name: Commit & Push results (optional)
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add Workflow-CI/MLProject/mlruns/ || true
+          git commit -m "Upload MLflow artifacts [skip ci]" || echo "No changes to commit"
+          git push origin main || true
+
+      # ====== 4 pts: build & push Docker (butuh secrets) ======
+      - name: Build Docker Image from MLflow model
+        if: env.RUN_ID != ''
+        working-directory: Workflow-CI/MLProject
+        run: |
+          mlflow models build-docker --model-uri "runs:/$RUN_ID/model" --name creditscore_model
+
+      - name: Login to Docker Hub
+        if: env.RUN_ID != ''
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+      - name: Tag & Push Docker Image
+        if: env.RUN_ID != ''
+        run: |
+          docker tag creditscore_model ${{ secrets.DOCKER_HUB_USERNAME }}/creditscore_model:latest
+          docker push ${{ secrets.DOCKER_HUB_USERNAME }}/creditscore_model:latest
