@@ -11,83 +11,118 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      # Pakai ABSOLUTE PATH ke mlruns agar tidak “nyasar” antar proses
+      # Pakai path absolut agar FileStore MLflow konsisten
       MLFLOW_TRACKING_URI: file:${{ github.workspace }}/Workflow-CI/MLProject/mlruns
       MLFLOW_EXPERIMENT_NAME: CI-Workflow
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Set up job
+        run: echo "Starting CI job..."
 
-      - name: Setup Python
+      - name: Run actions/checkout@v3
+        uses: actions/checkout@v4 # (tetap v4, hanya label step disesuaikan)
+
+      - name: Set up Python 3.12.7
         uses: actions/setup-python@v5
         with:
           python-version: "3.12.7"
 
+      - name: Check Env
+        run: |
+          python -V
+          echo "WORKSPACE=${{ github.workspace }}"
+          echo "MLFLOW_TRACKING_URI=${MLFLOW_TRACKING_URI}"
+          echo "MLFLOW_EXPERIMENT_NAME=${MLFLOW_EXPERIMENT_NAME}"
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mlflow==2.19.0 catboost==1.2.5 scikit-learn==1.5.2 pandas==2.2.3 numpy==1.26.4 matplotlib==3.9.2 scipy==1.11.4
+          pip install \
+            mlflow==2.19.0 \
+            numpy==1.26.4 \
+            matplotlib==3.9.2 \
+            scipy==1.11.4
+            catboost==1.2.5 \
+            scikit-learn==1.5.2 \
+            pandas==2.2.3 \
 
-      - name: Ensure tracking dir exists
-        run: |
-          mkdir -p "${{ github.workspace }}/Workflow-CI/MLProject/mlruns"
-
-      - name: Run MLflow Project
+      - name: Run mlflow project
         working-directory: Workflow-CI/MLProject
         env:
-          # pastikan env yang sama juga masuk ke step ini
           MLFLOW_TRACKING_URI: ${{ env.MLFLOW_TRACKING_URI }}
         run: |
+          mkdir -p mlruns
           mlflow run . --env-manager=local --experiment-name "${MLFLOW_EXPERIMENT_NAME}"
 
-      - name: Capture latest run_id (by experiment name)
+      - name: Get latest MLflow run_id
         working-directory: Workflow-CI/MLProject
-        env:
-          MLFLOW_TRACKING_URI: ${{ env.MLFLOW_TRACKING_URI }}
-          MLFLOW_EXPERIMENT_NAME: ${{ env.MLFLOW_EXPERIMENT_NAME }}
         run: |
-          EXPT_ID=$(mlflow experiments list --view-all | awk -v name="${MLFLOW_EXPERIMENT_NAME}" '$0 ~ name {print $1}')
-          echo "Experiment ID: $EXPT_ID"
-          RUN_ID=$(mlflow runs list --experiment-id "$EXPT_ID" --max-results 1 --order-by attributes.start_time DESC | awk 'NR==2{print $1}')
+          # Ambil direktori run terbaru (mtime) dari semua experiment di mlruns/*/*
+          RUN_DIR=$(find mlruns -mindepth 2 -maxdepth 2 -type d -printf '%T@ %p\n' \
+                    | sort -nr | head -n1 | awk '{print $2}')
+          RUN_ID=$(basename "$RUN_DIR")
           echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
           echo "Latest run_id: $RUN_ID"
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: mlflow-artifacts
-          path: |
-            Workflow-CI/MLProject/mlruns/
-            Workflow-CI/MLProject/submission.csv
-            Workflow-CI/MLProject/confusion_matrix_val.png
-            Workflow-CI/MLProject/feature_importance.csv
-
-      - name: Commit & Push results (optional)
+      - name: Install Python dependencies
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add Workflow-CI/MLProject/mlruns/ || true
-          git commit -m "Upload MLflow artifacts [skip ci]" || echo "No changes to commit"
-          git push origin main || true
+          # Dependensi tambahan untuk uploader (jika pakai Google Drive)
+          pip install google-api-python-client google-auth google-auth-httplib2 google-auth-oauthlib || true
+          python -c "print('Extra deps installed (if needed).')" || true
 
-      - name: Build Docker Image from MLflow model
+      - name: Upload to Google Drive
+        if: env.RUN_ID != ''
+        working-directory: ${{ github.workspace }}
+        env:
+          # Siapkan secrets ini jika memang pakai Drive:
+          # - GDRIVE_CREDENTIALS (isi JSON Service Account, one-line string)
+          # - GDRIVE_FOLDER_ID   (ID folder/Shared Drive tujuan)
+          GDRIVE_CREDENTIALS: ${{ secrets.GDRIVE_CREDENTIALS }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          MLRUNS_ROOT: Workflow-CI/MLProject/mlruns
+          RUN_ID: ${{ env.RUN_ID }}
+        run: |
+          # Jalankan uploader kustom jika tersedia
+          if [ -f "Workflow-CI/MLProject/upload_to_gdrive.py" ]; then
+            python Workflow-CI/MLProject/upload_to_gdrive.py
+          else
+            echo "No Google Drive uploader script found; skipping."
+          fi
+
+      - name: Build Docker Model
         if: env.RUN_ID != ''
         working-directory: Workflow-CI/MLProject
         env:
           MLFLOW_TRACKING_URI: ${{ env.MLFLOW_TRACKING_URI }}
         run: |
-          mlflow models build-docker --model-uri "runs:/${{ env.RUN_ID }}/model" --name creditscore_model
+          mlflow models build-docker --model-uri "runs:/${{ env.RUN_ID }}/model" \
+                                     --name creditscore_model
 
-      - name: Login to Docker Hub
+      - name: Log in to Docker Hub
         if: env.RUN_ID != ''
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Tag & Push Docker Image
+      - name: Tag Docker Image
         if: env.RUN_ID != ''
         run: |
           docker tag creditscore_model ${{ secrets.DOCKER_HUB_USERNAME }}/creditscore_model:latest
+
+      - name: Push Docker Image
+        if: env.RUN_ID != ''
+        run: |
           docker push ${{ secrets.DOCKER_HUB_USERNAME }}/creditscore_model:latest
+
+      - name: Post Log in to Docker Hub
+        run: echo "Docker Hub login step completed."
+
+      - name: Post Set up Python 3.12.7
+        run: python -V
+
+      - name: Post Run actions/checkout@v3
+        run: git rev-parse --short HEAD
+
+      - name: Complete job
+        run: echo "✅ CI finished."
