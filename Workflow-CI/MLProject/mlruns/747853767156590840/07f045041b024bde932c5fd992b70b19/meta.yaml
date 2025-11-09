@@ -1,0 +1,15 @@
+artifact_uri: file:///home/runner/work/Membangun-Sistem-Machine-Learning-CreditScore/Membangun-Sistem-Machine-Learning-CreditScore/Workflow-CI/MLProject/mlruns/747853767156590840/07f045041b024bde932c5fd992b70b19/artifacts
+end_time: 1762695775018
+entry_point_name: ''
+experiment_id: '747853767156590840'
+lifecycle_stage: active
+run_id: 07f045041b024bde932c5fd992b70b19
+run_name: puzzled-boar-212
+run_uuid: 07f045041b024bde932c5fd992b70b19
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762695732912
+status: 3
+tags: []
+user_id: runner
