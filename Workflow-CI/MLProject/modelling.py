@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-modelling.py — CatBoost classification + MLflow (final attach-safe version)
+modelling.py — CatBoost classification + MLflow (attach-safe)
+- Aman untuk dipanggil via `mlflow run` (run sudah dibuka oleh MLflow Project)
+- Juga bisa jalan standalone: `python modelling.py --train_path ... --test_path ...`
+  (akan membuka run top-level sendiri)
 """
 
-import os
 from pathlib import Path
 import argparse
+import os
 import numpy as np
 import pandas as pd
 import mlflow
@@ -28,7 +31,8 @@ BASE = Path(__file__).resolve().parent
 TRAIN_PATH = (BASE / args.train_path).resolve() if not Path(args.train_path).is_absolute() else Path(args.train_path)
 TEST_PATH  = (BASE / args.test_path ).resolve() if not Path(args.test_path ).is_absolute() else Path(args.test_path)
 TARGET_COL = "Credit_Score"
-EXPERIMENT_NAME = "Credit_Scoring_Classification"
+# Hanya dipakai saat running standalone (bukan dari MLflow Project)
+DEFAULT_EXPERIMENT_NAME = "Credit_Scoring_Classification"
 
 print(f"[INFO] Current Working Dir : {Path.cwd()}")
 print(f"[INFO] Train Path Resolved : {TRAIN_PATH}")
@@ -60,6 +64,7 @@ X_tr, X_val, y_tr, y_val = train_test_split(
 cat_columns = X_tr.select_dtypes(include=["object", "category"]).columns.tolist()
 print(f"[INFO] Detected categorical columns: {cat_columns}")
 
+# Cast kategorikal ke string untuk CatBoost
 for c in cat_columns:
     X_tr[c]  = X_tr[c].astype(str)
     X_val[c] = X_val[c].astype(str)
@@ -76,34 +81,30 @@ for c in cat_columns:
         X_test_infer[c] = X_test_infer[c].astype(str)
 test_pool = Pool(X_test_infer, cat_features=cat_idx)
 
-# ================== 2. MLflow Setup ==================
-# ================== 2. MLflow Setup ==================
-mlruns_root = (BASE.parent / "mlruns").as_posix()
-mlflow.set_tracking_uri(f"file://{mlruns_root}")
-
-env_run_id = os.getenv("MLFLOW_RUN_ID")
-
-if env_run_id:
-    print(f"[INFO] Attached to MLflow Project run: {env_run_id}")
-    # DO NOT call set_experiment() or start_run() — run is already active
-else:
-    print("[INFO] Running standalone — setting experiment and starting run.")
-    mlflow.set_experiment(EXPERIMENT_NAME)
+# ================== 2. MLflow Setup (attach-safe) ==================
+def _ensure_run():
+    """
+    - Jika dipanggil via `mlflow run`, sudah ada active run: JANGAN buka/ubah apapun.
+    - Jika tidak ada active run (standalone), buka run top-level sendiri dan set experiment default.
+    - Jangan pernah memanggil set_tracking_uri / mengubah experiment saat sudah ada run aktif.
+    """
+    if mlflow.active_run() is not None:
+        rid = mlflow.active_run().info.run_id
+        print(f"[INFO] Attached to MLflow Project run: {rid} (already active by MLflow)")
+        return False  # tidak membuka run baru
+    # Standalone: coba hormati env `MLFLOW_EXPERIMENT_NAME` jika ada, else pakai default
+    exp_name = os.getenv("MLFLOW_EXPERIMENT_NAME", DEFAULT_EXPERIMENT_NAME)
+    mlflow.set_experiment(exp_name)
     mlflow.start_run(run_name="Manual_CreditScore")
+    print(f"[INFO] Running standalone — started new run in experiment: {exp_name}")
+    return True  # membuka run baru
 
+_opened_top_level_run = _ensure_run()
+
+# Autolog tidak membuka run baru; aman dipakai
 mlflow.sklearn.autolog(disable=False, log_models=False)
 
-# ================== 3. Attach-safe MLflow Context ==================
-env_run_id = os.getenv("MLFLOW_RUN_ID")
-
-if env_run_id:
-    print(f"[INFO] Attached to MLflow Project run: {env_run_id} (already active by MLflow)")
-else:
-    print("[INFO] Running standalone (no MLFLOW_RUN_ID set) — manual/local mode.")
-    # Uncomment jika ingin logging saat menjalankan manual:
-    # mlflow.start_run(run_name="Manual_CreditScore")
-
-# ================== 4. Training & Logging ==================
+# ================== 3. Training & Logging ==================
 params = {
     "iterations": 400,
     "depth": 6,
@@ -113,7 +114,7 @@ params = {
     "random_seed": 42,
     "verbose": 100,
     "od_type": "Iter",
-    "od_wait": 50
+    "od_wait": 50,
 }
 
 mlflow.log_params(params)
@@ -146,7 +147,7 @@ print(f"✅ Val Accuracy: {acc:.4f} | F1_w: {f1w:.4f} | Precision_w: {prec:.4f} 
 classes = [id_to_label[i] for i in range(len(label_to_id))]
 cm = confusion_matrix(y_val_true_lbl, y_val_pred_lbl, labels=classes)
 
-fig = plt.figure(figsize=(6,5))
+fig = plt.figure(figsize=(6, 5))
 plt.imshow(cm, interpolation='nearest')
 plt.title('Confusion Matrix (Validation)')
 plt.xticks(ticks=range(len(classes)), labels=classes, rotation=45, ha="right")
@@ -188,3 +189,7 @@ mlflow.log_artifact(str(sub_path))
 
 print("\n[INFO] Artifacts logged: confusion_matrix_val.png, feature_importance.csv, submission.csv")
 print("[INFO] ✅ Model logged successfully")
+
+# Tutup run hanya jika kita yang membukanya (standalone); jangan mengganggu Project run
+if _opened_top_level_run and mlflow.active_run() is not None:
+    mlflow.end_run()
