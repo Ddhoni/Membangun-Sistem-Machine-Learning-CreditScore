@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/d8fe22b21d514ef4a1277cd00f2a7ceb/artifacts
+end_time: 1762633416499
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d8fe22b21d514ef4a1277cd00f2a7ceb
+run_name: defiant-duck-364
+run_uuid: d8fe22b21d514ef4a1277cd00f2a7ceb
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762633413194
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

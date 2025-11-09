@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/cbeddc94f2df448482caf724c7e40a73/artifacts
+end_time: 1762629903731
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cbeddc94f2df448482caf724c7e40a73
+run_name: likeable-hog-648
+run_uuid: cbeddc94f2df448482caf724c7e40a73
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762629901593
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/6e4214a9a3ec4f50b4d0d30f7421cb1e/artifacts
+end_time: 1762655237605
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6e4214a9a3ec4f50b4d0d30f7421cb1e
+run_name: gifted-cat-467
+run_uuid: 6e4214a9a3ec4f50b4d0d30f7421cb1e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762655234219
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

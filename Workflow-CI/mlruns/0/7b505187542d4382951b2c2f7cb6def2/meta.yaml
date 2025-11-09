@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/7b505187542d4382951b2c2f7cb6def2/artifacts
+end_time: 1762632212318
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7b505187542d4382951b2c2f7cb6def2
+run_name: beautiful-mule-112
+run_uuid: 7b505187542d4382951b2c2f7cb6def2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762632208825
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

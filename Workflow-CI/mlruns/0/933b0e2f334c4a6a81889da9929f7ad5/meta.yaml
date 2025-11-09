@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/933b0e2f334c4a6a81889da9929f7ad5/artifacts
+end_time: 1762630853060
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 933b0e2f334c4a6a81889da9929f7ad5
+run_name: gaudy-ram-246
+run_uuid: 933b0e2f334c4a6a81889da9929f7ad5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762630850798
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

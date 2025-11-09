@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/3f28c01393e249baa2198366aebef136/artifacts
+end_time: 1762655473828
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3f28c01393e249baa2198366aebef136
+run_name: sedate-conch-891
+run_uuid: 3f28c01393e249baa2198366aebef136
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762655469678
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

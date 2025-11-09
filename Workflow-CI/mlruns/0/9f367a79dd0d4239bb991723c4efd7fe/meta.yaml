@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/9f367a79dd0d4239bb991723c4efd7fe/artifacts
+end_time: 1762630793312
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 9f367a79dd0d4239bb991723c4efd7fe
+run_name: wistful-gull-121
+run_uuid: 9f367a79dd0d4239bb991723c4efd7fe
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762630790690
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

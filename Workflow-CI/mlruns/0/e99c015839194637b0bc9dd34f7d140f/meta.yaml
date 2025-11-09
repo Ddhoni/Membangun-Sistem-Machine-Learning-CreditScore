@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/e99c015839194637b0bc9dd34f7d140f/artifacts
+end_time: 1762655552251
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e99c015839194637b0bc9dd34f7d140f
+run_name: funny-wolf-660
+run_uuid: e99c015839194637b0bc9dd34f7d140f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762655524439
+status: 3
+tags: []
+user_id: muhammaddhoniapriyadi

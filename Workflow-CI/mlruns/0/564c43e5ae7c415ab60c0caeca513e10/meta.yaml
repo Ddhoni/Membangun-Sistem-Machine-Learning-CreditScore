@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/564c43e5ae7c415ab60c0caeca513e10/artifacts
+end_time: 1762635061348
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 564c43e5ae7c415ab60c0caeca513e10
+run_name: thundering-rat-211
+run_uuid: 564c43e5ae7c415ab60c0caeca513e10
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762635058158
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

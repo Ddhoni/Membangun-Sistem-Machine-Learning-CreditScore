@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/042902fca9d342b3ba33ebcb8aa3aad2/artifacts
+end_time: 1762630188382
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 042902fca9d342b3ba33ebcb8aa3aad2
+run_name: unequaled-shrimp-896
+run_uuid: 042902fca9d342b3ba33ebcb8aa3aad2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762630186421
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

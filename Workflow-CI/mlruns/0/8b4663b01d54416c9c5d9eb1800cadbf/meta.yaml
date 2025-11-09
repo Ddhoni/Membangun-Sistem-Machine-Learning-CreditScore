@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/8b4663b01d54416c9c5d9eb1800cadbf/artifacts
+end_time: 1762632689840
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 8b4663b01d54416c9c5d9eb1800cadbf
+run_name: zealous-wasp-483
+run_uuid: 8b4663b01d54416c9c5d9eb1800cadbf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762632685978
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

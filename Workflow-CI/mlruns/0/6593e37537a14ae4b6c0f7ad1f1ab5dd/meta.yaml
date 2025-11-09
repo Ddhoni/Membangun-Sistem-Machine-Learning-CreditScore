@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/6593e37537a14ae4b6c0f7ad1f1ab5dd/artifacts
+end_time: 1762630667456
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6593e37537a14ae4b6c0f7ad1f1ab5dd
+run_name: rare-dolphin-438
+run_uuid: 6593e37537a14ae4b6c0f7ad1f1ab5dd
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762630664844
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

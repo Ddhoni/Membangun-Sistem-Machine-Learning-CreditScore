@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/35360a3da5a043ffaa1de5ad619ef4b4/artifacts
+end_time: 1762630252269
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 35360a3da5a043ffaa1de5ad619ef4b4
+run_name: handsome-snail-374
+run_uuid: 35360a3da5a043ffaa1de5ad619ef4b4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762630248657
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

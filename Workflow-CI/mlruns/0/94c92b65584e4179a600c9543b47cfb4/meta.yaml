@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/94c92b65584e4179a600c9543b47cfb4/artifacts
+end_time: 1762632932121
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 94c92b65584e4179a600c9543b47cfb4
+run_name: masked-finch-653
+run_uuid: 94c92b65584e4179a600c9543b47cfb4
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762632928435
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

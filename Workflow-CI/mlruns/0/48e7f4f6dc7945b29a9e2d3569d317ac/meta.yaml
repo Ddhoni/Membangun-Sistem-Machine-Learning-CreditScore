@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/48e7f4f6dc7945b29a9e2d3569d317ac/artifacts
+end_time: 1762632049919
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 48e7f4f6dc7945b29a9e2d3569d317ac
+run_name: glamorous-croc-497
+run_uuid: 48e7f4f6dc7945b29a9e2d3569d317ac
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762632046374
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

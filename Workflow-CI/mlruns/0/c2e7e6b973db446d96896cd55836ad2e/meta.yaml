@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/c2e7e6b973db446d96896cd55836ad2e/artifacts
+end_time: 1762633828149
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c2e7e6b973db446d96896cd55836ad2e
+run_name: dashing-quail-443
+run_uuid: c2e7e6b973db446d96896cd55836ad2e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762633824693
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

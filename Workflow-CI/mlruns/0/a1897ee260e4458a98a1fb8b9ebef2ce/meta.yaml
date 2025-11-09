@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/a1897ee260e4458a98a1fb8b9ebef2ce/artifacts
+end_time: 1762630957722
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: a1897ee260e4458a98a1fb8b9ebef2ce
+run_name: angry-dolphin-875
+run_uuid: a1897ee260e4458a98a1fb8b9ebef2ce
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762630955114
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

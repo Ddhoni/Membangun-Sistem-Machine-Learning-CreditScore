@@ -1,0 +1,12 @@
+name: credit_scoring_ci
+
+conda_env: conda.yaml
+
+entry_points:
+  main:
+    parameters:
+      train_path:
+        { type: str, default: "data_preprocessed/preprocessed_train.csv" }
+      test_path:
+        { type: str, default: "data_preprocessed/preprocessed_test.csv" }
+    command: "python modelling.py --train_path {train_path} --test_path {test_path}"

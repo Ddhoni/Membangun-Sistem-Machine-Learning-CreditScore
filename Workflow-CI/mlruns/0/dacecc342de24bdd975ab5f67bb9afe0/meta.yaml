@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/dacecc342de24bdd975ab5f67bb9afe0/artifacts
+end_time: 1762632728367
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: dacecc342de24bdd975ab5f67bb9afe0
+run_name: caring-mole-33
+run_uuid: dacecc342de24bdd975ab5f67bb9afe0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762632725271
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/655416810639680721/ee9497ba6b794869aae6c65af5eb3fda/artifacts
+end_time: 1762633115514
+entry_point_name: ''
+experiment_id: '655416810639680721'
+lifecycle_stage: active
+run_id: ee9497ba6b794869aae6c65af5eb3fda
+run_name: CatBoost_CreditScore
+run_uuid: ee9497ba6b794869aae6c65af5eb3fda
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762632972518
+status: 3
+tags: []
+user_id: muhammaddhoniapriyadi

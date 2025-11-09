@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/b181eda2295545d598a0a9441e64d252/artifacts
+end_time: 1762633334149
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b181eda2295545d598a0a9441e64d252
+run_name: luminous-duck-805
+run_uuid: b181eda2295545d598a0a9441e64d252
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762633331188
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

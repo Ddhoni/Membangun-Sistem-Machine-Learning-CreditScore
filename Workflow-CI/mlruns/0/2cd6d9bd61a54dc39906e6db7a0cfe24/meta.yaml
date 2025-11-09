@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/2cd6d9bd61a54dc39906e6db7a0cfe24/artifacts
+end_time: 1762632425423
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2cd6d9bd61a54dc39906e6db7a0cfe24
+run_name: lyrical-rook-41
+run_uuid: 2cd6d9bd61a54dc39906e6db7a0cfe24
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762632422150
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

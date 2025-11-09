@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/2f92ef7569784df4b8f7a4346b216a86/artifacts
+end_time: 1762632454028
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2f92ef7569784df4b8f7a4346b216a86
+run_name: victorious-newt-574
+run_uuid: 2f92ef7569784df4b8f7a4346b216a86
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762632450618
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

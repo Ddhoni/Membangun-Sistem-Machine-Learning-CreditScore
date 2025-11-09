@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/c9f2ccf5ff3d481ebbee16bbe7426824/artifacts
+end_time: 1762655798769
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c9f2ccf5ff3d481ebbee16bbe7426824
+run_name: enthused-sheep-299
+run_uuid: c9f2ccf5ff3d481ebbee16bbe7426824
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762655769364
+status: 3
+tags: []
+user_id: muhammaddhoniapriyadi

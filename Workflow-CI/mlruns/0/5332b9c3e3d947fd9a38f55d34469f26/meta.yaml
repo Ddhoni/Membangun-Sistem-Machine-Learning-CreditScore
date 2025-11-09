@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/5332b9c3e3d947fd9a38f55d34469f26/artifacts
+end_time: 1762630328599
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 5332b9c3e3d947fd9a38f55d34469f26
+run_name: able-wren-598
+run_uuid: 5332b9c3e3d947fd9a38f55d34469f26
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762630325014
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

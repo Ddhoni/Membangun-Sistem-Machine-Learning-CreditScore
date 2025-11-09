@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/2e27294804be4f4493cd55a78debcba7/artifacts
+end_time: 1762655369500
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2e27294804be4f4493cd55a78debcba7
+run_name: chill-fowl-286
+run_uuid: 2e27294804be4f4493cd55a78debcba7
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762655357087
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

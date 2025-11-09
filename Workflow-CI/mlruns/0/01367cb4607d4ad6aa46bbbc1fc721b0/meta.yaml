@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/01367cb4607d4ad6aa46bbbc1fc721b0/artifacts
+end_time: 1762630905231
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 01367cb4607d4ad6aa46bbbc1fc721b0
+run_name: rogue-stoat-491
+run_uuid: 01367cb4607d4ad6aa46bbbc1fc721b0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762630902921
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

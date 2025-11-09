@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/0cfaee7b48c143fe80d3c1e1bb56fadf/artifacts
+end_time: 1762633685143
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 0cfaee7b48c143fe80d3c1e1bb56fadf
+run_name: upset-stoat-80
+run_uuid: 0cfaee7b48c143fe80d3c1e1bb56fadf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762633681777
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

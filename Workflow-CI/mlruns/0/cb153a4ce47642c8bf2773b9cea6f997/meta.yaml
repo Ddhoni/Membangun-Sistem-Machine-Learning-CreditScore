@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/cb153a4ce47642c8bf2773b9cea6f997/artifacts
+end_time: 1762631250874
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cb153a4ce47642c8bf2773b9cea6f997
+run_name: agreeable-kit-118
+run_uuid: cb153a4ce47642c8bf2773b9cea6f997
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762631247515
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi

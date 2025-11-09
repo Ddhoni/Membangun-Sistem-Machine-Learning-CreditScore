@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/muhammaddhoniapriyadi/Downloads/eksperimen_credit_scoring/Workflow-CI/mlruns/0/2fb57da368bc423aa850413b73d2f036/artifacts
+end_time: 1762630142604
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2fb57da368bc423aa850413b73d2f036
+run_name: mysterious-fowl-654
+run_uuid: 2fb57da368bc423aa850413b73d2f036
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762630140452
+status: 4
+tags: []
+user_id: muhammaddhoniapriyadi
