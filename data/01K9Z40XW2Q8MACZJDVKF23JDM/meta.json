@@ -1,0 +1,18 @@
+{
+	"ulid": "01K9Z40XW2Q8MACZJDVKF23JDM",
+	"minTime": 1763043944238,
+	"maxTime": 1763049600000,
+	"stats": {
+		"numSamples": 88064,
+		"numFloatSamples": 88064,
+		"numSeries": 88,
+		"numChunks": 694
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01K9Z40XW2Q8MACZJDVKF23JDM"
+		]
+	},
+	"version": 1
+}

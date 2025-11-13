@@ -11,7 +11,7 @@ from prometheus_client import (
 # =======================
 # Config (via env var)
 # =======================
-MODEL_URL = os.getenv("MODEL_URL", "http://127.0.0.1:5005/invocations")  # MLflow serve
+MODEL_URL = os.getenv("MODEL_URL", "http://127.0.0.1:5001/invocations")  # MLflow serve
 HOST      = os.getenv("HOST", "0.0.0.0")
 PORT      = int(os.getenv("PORT", "8000"))
 TIMEOUT_S = float(os.getenv("TIMEOUT_S", "10"))
